@@ -1,0 +1,12 @@
+GET http://localhost:3000/messages
+
+### Post Message
+POST http://localhost:3000/messages
+content-type : application/json
+
+{
+    "content": "Test after adding di"
+}
+
+### Get Message by ID
+GET http://localhost:3000/messages/1700
