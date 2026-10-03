@@ -1,0 +1,26 @@
+GET http://localhost:3000/auth
+
+###
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+###
+
+DELETE http://localhost:3000/auth/1
+Content-Type: application/json
+
+###
+
+PATCH http://localhost:3000/auth/4
+Content-Type: application/json
+
+{
+    "email": "updated@example.com",
+    "password": "newpassword123"
+}
+
+###
