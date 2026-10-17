@@ -1,6 +1,4 @@
-GET http://localhost:3000/auth
 
-###
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
@@ -8,6 +6,15 @@ Content-Type: application/json
     "email": "test@example.com",
     "password": "password123"
 }
+###
+GET http://localhost:3000/auth/4
+
+### Not found
+GET http://localhost:3000/auth/999
+
+###
+GET http://localhost:3000/auth?email=test@example.com
+
 ###
 
 DELETE http://localhost:3000/auth/1
