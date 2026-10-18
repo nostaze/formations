@@ -5,21 +5,21 @@ import { CreateUserDto } from './dtos/create-user.dto.js';
 import { UsersService } from './users.service.js';
 import { Serialize } from '../interceptors/serialize.interceptor.js';
 import { UserDto } from './dtos/user.dtos.js';
+import { AuthService } from './auth.service.js';
 
 @Controller('auth')
 @Serialize(UserDto)
 export class UsersController {
-    constructor(private usersService: UsersService) {}
+    constructor(private usersService: UsersService,
+                private authService: AuthService) {}
 
     @Post('/signup')
     createUser(@Body() body: CreateUserDto) {
-        console.log(body);
-        return this.usersService.create(body.email, body.password);
+        return this.authService.signup(body.email, body.password);
     }
 
     @Get('/:id')
     async findUser(@Param('id') id: string) {
-        console.log('Finding user with id:', id);
         const user = await this.usersService.findOne(parseInt(id));
         if (!user) {
             throw new NotFoundException('User not found');
